@@ -1,0 +1,76 @@
+<h1 style="color:#66CCCC;font-family: initial;font-style: italic;font-size: 3em;margin-bottom: 30px;text-align: center; color:#66CCCC;">  List of System 
+<?php
+	
+	$auth = Zend_Auth::getInstance();
+	$identity = $auth->getIdentity(); 
+	$user_id = $identity->id_user;
+	$type = $identity->type;
+	$username = $identity->username;
+
+	if($this->type == 0){
+		echo "Admins";
+	} 
+	else{
+		echo "Users";	
+	}
+?>  
+</h1>
+
+<div id="view-content">
+<!--// style=-->	
+
+<?php
+
+	echo "<table class='table table-striped' style='padding:30px;'>";
+
+	if($type == 1 and $username == 'admin' and $user_id == 1){
+
+	echo "<tr style='background-color:#333;color:white;font-size:18px; font-family:Tahoma;'><th style='width: 70px;'> ID </th><th style='width: 150px;'> Username </th><th style='width: 130px;'> Update </th><th style='width: 150px;text-align: center;'> Make Admin </th><th style='width: 150px;text-align: center;'> Ban User </th></tr> ";
+
+		foreach ($this->users as $user){
+		
+			echo "<tr><td style='padding-left:15px; padding-top:25px;'>".$user['id_user']."</td><td style='padding-top:25px;'><lable style='margin-left:20px; font-size:20px;'>".$user['username']."</lable></td>";
+			echo "<td><a class='btn btn-info' style='margin-right:20px; margin-top:10px;' href='".$this->baseUrl()."/users/edit/id/".$user['id_user']."'> Edit </a></td>";
+			if($user['type'] == 0){
+				echo "<td><a class='btn btn-success' style='margin-left: 28px; margin-top:10px;' href='".$this->baseUrl()."/users/makeadmin/id/".$user['id_user']."'> Make Admin </a></td>";
+			}else{
+				echo "<td><a class='btn btn-success' style='margin-left:28px; margin-top:10px;' href='".$this->baseUrl()."/users/rmadmin/id/".$user['id_user']."'> Remove Admin </a></td>";
+			}
+			if($user['ban_user'] == 1){
+				echo "<td><a class='btn btn-danger' style='margin-left: 40px; margin-top:10px;' href='".$this->baseUrl()."/users/ban/id/".$user['id_user']."'> Deactivate </a></td></tr>";
+			}else{
+				echo "<td><a class='btn btn-danger' style='margin: 10px;' href='".$this->baseUrl()."/users/activate/id/".$user['id_user']."'> Activate </a></td></tr>";
+			}
+		}
+
+	}
+	else{
+		echo "<tr style='background-color:#333;color:white;font-size:18px; font-family:Tahoma;'><th style='width: 70px;'> ID </th><th style='width: 150px;'> Username </th><th style='width: 130px;'> Update </th></tr> ";
+
+
+		foreach ($this->users as $user){
+	
+			echo "<tr><td style='padding-left:15px; padding-top:25px;'>".$user['id_user']."</td><td style='padding-top:25px;'><lable style='margin-left:20px; font-size:20px;'>".$user['username']."</lable></td>";
+			echo "<td><a class='btn btn-info' style='margin-right:20px; margin-top:10px;' href='".$this->baseUrl()."/users/edit/id/".$user['id_user']."'> Edit </a></td>";
+			
+			// if($user['type'] == 0){
+			// 	echo "<td><a class='btn btn-success' style='margin-left: 28px; margin-top:10px;' href='".$this->baseUrl()."/users/makeadmin/id/".$user['id_user']."'> Make Admin </a></td>";
+			// }else{
+			// 	echo "<td><a class='btn btn-success' style='margin-left:28px; margin-top:10px;' href='".$this->baseUrl()."/users/rmadmin/id/".$user['id_user']."'> Remove Admin </a></td>";
+			// }
+			// if($user['ban_user'] == 1){
+			// 	echo "<td><a class='btn btn-danger' style='margin-left: 40px; margin-top:10px;' href='".$this->baseUrl()."/users/ban/id/".$user['id_user']."'> Deactivate </a></td></tr>";
+			// }else{
+			// 	echo "<td><a class='btn btn-danger' style='margin: 10px;' href='".$this->baseUrl()."/users/activate/id/".$user['id_user']."'> Activate </a></td></tr>";
+			// }
+
+		}
+	}
+
+	echo "</table>";
+
+?>
+</div>
+
+
+<!-- if($type == 1 and $username == 'admin' and $user_id == 1){ -->

@@ -1,0 +1,26 @@
+<h1>User profile  </h1>
+
+
+<?php
+	foreach ($this->users as $user){
+	echo "<img src='".$this->baseUrl()."/images/profile/".$user['image']."'/><br/>";
+	echo "<label> Username: </label>".$user['username'].'<br /> <br />';
+	echo "<label> Email: </label>".$user['email'].'<br /> <br />';
+	echo "<label> Password: </label>".$user['password'].'<br /> <br />';
+	echo "<label> Gender: </label>".$user['gender'].'<br /> <br />';
+	echo "<label> Country: </label>".$user['country'].'<br /> <br />';
+	echo "<label> Signature: </label>".$user['signature'].'<br /> <br />';
+
+
+	
+	}
+	
+
+
+ echo "<a href='".$this->baseUrl()."/users/edit'><input type='submit' value='update profile' name='update' /></a>
+<br /><br />";
+
+
+
+?>
+

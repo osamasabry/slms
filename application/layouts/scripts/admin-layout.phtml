@@ -1,0 +1,317 @@
+<?php echo $this->doctype() ?>
+<html>
+<head>
+<?php echo $this->headMeta(); ?>
+<?php echo $this->headTitle(); ?>
+<?php echo $this->headLink(); ?>
+</head>
+<body>
+   <div class="left-content">
+	   <div class="inner-content">
+		<!-- header-starts -->
+			<div class="header-section">
+			<!-- top_bg -->
+			<div class="top_bg" style="height: 70px;">
+				<?php 
+					$auth = Zend_Auth::getInstance();
+			        // if($auth->hasIdentity()){
+			            $identity = $auth->getIdentity(); 
+			            $user_id = $identity->id_user;
+			            $type = $identity->type;
+			            $username = $identity->username;
+			            // var_dump($this->user);die;
+					
+				?>
+					<div class="header_top">
+						<div class="top_right">
+						<div class="navbar-custom-menu">
+					            <ul class="nav navbar-nav">
+							<li class="dropdown user user-menu" style="margin-top: 15px;">
+					                <!-- Menu Toggle Button -->
+					                <h1 style="font-size: 30px;color: #ff6978;">
+					                  <!-- The user image in the navbar-->
+					                  <!-- <img src='<?php echo $this->baseUrl()."/images/profile/".$this->user['image']?>' class="user-image" alt="User Image"> -->
+					                  <!-- hidden-xs hides the username on small devices so only the image appears. -->
+										<li style="color:#FFFFFF;"><span class="fa fa-user"></span><?php echo " Welcome $username"; ?></span>
+					                </h1>
+					               </li>
+					               </ul>
+					               </div>
+
+						</div>
+						<div class="top_left">
+					        </nav>
+
+						</div>
+							<div class="clearfix"> </div>
+					</div>
+				
+					</div>
+					<div class="clearfix"></div>
+				<!-- /top_bg -->
+				</div>
+				<div class="header_bg">
+						
+							<div class="header">
+								<div class="head-t">
+									<div class="logo">
+										<!-- <a href="index.html"><img src="images/logo.png" class="img-responsive" alt=""> </a> -->
+									</div>
+									
+				
+								</div>
+							</div>
+						</div>
+				<!--content-->
+			<div class="content" >
+				  <div class="col-md-9" style="width: 85%;margin-top: -100px;margin-left: 30px;" >
+				  	
+				        
+                <?php
+                    // echo $this->content;
+                    // echo $this->form;
+                	echo $this->layout()->content;
+                ?>           
+                  </div>           
+			</div>
+			<!--content-->
+		</div>
+</div>
+				<!--//content-inner-->
+			<!--/sidebar-menu-->
+				<div class="sidebar-menu">
+					<header class="logo1">
+						<button class="sidebar-icon"> <span class="fa fa-bars"></span> </button> 
+					</header>
+						<div style="border-top:1px ridge rgba(255, 255, 255, 0.15)"></div>
+                           <div class="menu">
+									<ul id="menu" >
+
+									
+
+
+
+
+
+
+
+
+
+
+
+
+
+										<!-- // home of system -->
+
+										<li><a href='<?php echo $this->baseUrl()."/cateogry/index"?>'><i class="fa fa-home"></i> <span>Home</span></a></li>
+
+										<li><a href='<?php echo $this->baseUrl()."/users/profile"?>'><i class="glyphicon glyphicon-user"></i> <span>Profile</span></a></li>
+
+										<!-- // show all system users -->
+										<li id="menu-academico" ><a href='#'><i class="fa fa-users"></i> <span> System Users </span> <span class="fa fa-angle-right" style="float: right"></span></a>
+										 <!-- // All Courses -->
+										   <ul id="menu-academico-sub" >
+
+											<li id="menu-academico-avaliacoes" ><a href='<?php echo $this->baseUrl()."/users/index"?>'><i class="fa fa-users"></i>&nbsp&nbsp&nbspAll Users </a></li>
+											
+											<li id="menu-academico-avaliacoes" ><a href='<?php echo $this->baseUrl()."/users/alladmins"?>'><i class="fa fa-users"></i>&nbsp&nbsp&nbsp All Admins </a></li>
+											
+										  </ul>
+										</li>
+
+										<!-- // Categories Actions -->
+
+										 <li id="menu-academico" ><a href='#'><i class="glyphicon glyphicon-th"></i> <span> Categories</span> <span class="fa fa-angle-right" style="float: right"></span></a>
+										 <!-- // All Courses -->
+										   <ul id="menu-academico-sub" >
+										   	  <li id="menu-academico-avaliacoes" ><a href='<?php echo $this->baseUrl()."/cateogry/listcat"?>'> <i class="lnr lnr-layers"></i> All Categories </a></li>
+
+											<li id="menu-academico-avaliacoes" ><a href='<?php echo $this->baseUrl()."/cateogry/add"?>'><i class="lnr lnr-pencil"></i>New Category </a></li>
+
+
+										  </ul>
+										</li>
+
+										<!-- // Courses Actions -->
+
+										 <li id="menu-academico" ><a href='#'><i class="glyphicon glyphicon-th-list"></i> <span> Courses</span> <span class="fa fa-angle-right" style="float: right"></span></a>
+										 <!-- // All Courses -->
+										   <ul id="menu-academico-sub" >
+
+											<li id="menu-academico-avaliacoes" ><a href='<?php echo $this->baseUrl()."/course/add"?>'> <i class="lnr lnr-pencil"></i> New Course </a></li>
+
+										  </ul>
+										</li>
+										<!-- // add material  -->
+
+										<li id="menu-academico" ><a href='#'><i class="fa fa-table"></i> <span> Materials</span> <span class="fa fa-angle-right" style="float: right"></span></a>
+										 <!-- // All Courses -->
+										   <ul id="menu-academico-sub" >
+
+											<li id="menu-academico-avaliacoes" ><a href='<?php echo $this->baseUrl()."/typematerials/addtypemat"?>'> <i class="lnr lnr-pencil"></i> New material </a></li>
+
+
+											<li id="menu-academico-avaliacoes" ><a href='<?php echo $this->baseUrl()."/typeuploads/addtypeup"?>'> <i class="lnr lnr-pencil"></i> New Type material </a></li>
+
+											<li id="menu-academico-avaliacoes" ><a href='<?php echo $this->baseUrl()."/Materials/addmaterial"?>'> <i class="lnr lnr-pencil"></i> New Upload material </a></li>
+
+										  </ul>
+										</li>
+
+											<!-- // state material  -->
+
+											<li id="menu-academico-avaliacoes" ><a href='<?php echo $this->baseUrl()."/Materials/add"?>'> <i class="lnr lnr-pencil"></i> Show/Hidden</a></li>
+
+											<!-- // lock material  -->
+											<li id="menu-academico-avaliacoes" ><a href='<?php echo $this->baseUrl()."/Materials/add"?>'> <i class="lnr lnr-pencil"></i> Lock/UNLock</a></li>
+
+
+
+
+
+										<!-- // User Requests  -->
+
+										<li><a href='<?php echo $this->baseUrl()."/requests/index"?>'><i class="lnr lnr-envelope"></i> <span>Requests </span></a></li>
+
+
+										<!-- // Website Statistics  -->
+
+										<li><a href="#"><i class="lnr lnr-chart-bars"></i> <span>Statistics</span> <span class="fa fa-angle-right" style="float: right"></span></a>
+										  <ul>
+											<li><a href='<?php echo $this->baseUrl()."/admin/index"?>'><i class="lnr lnr-chart-bars"></i> No Of Users</a></li>
+											<li><a href='#'><i class="lnr lnr-chart-bars"></i>No Of Downloads</a></li>
+											<li><a href='<?php echo $this->baseUrl()."/admin/count"?>'> <i class="lnr lnr-chart-bars"></i>No Of Requests</a></li>
+										</ul>
+										</li>
+
+
+										<!-- // admin logout of whole system -->
+										<li><a href='<?php echo $this->baseUrl()."/users/logout"?>'><i class="lnr lnr-chart-bars"></i> <span>Sign Out</span></a>
+										</li>
+									
+								  </ul>
+								</div>
+							  </div>
+							  <div class="clearfix"></div>		
+							</div>
+							<script>
+							var toggle = true;
+										
+							$(".sidebar-icon").click(function() {                
+							  if (toggle)
+							  {
+								$(".page-container").addClass("sidebar-collapsed").removeClass("sidebar-collapsed-back");
+								$("#menu span").css({"position":"absolute"});
+							  }
+							  else
+							  {
+								$(".page-container").removeClass("sidebar-collapsed").addClass("sidebar-collapsed-back");
+								setTimeout(function() {
+								  $("#menu span").css({"position":"relative"});
+								}, 400);
+							  }
+											
+											toggle = !toggle;
+										});
+							</script>
+<!--js -->
+<script src="js/jquery.nicescroll.js"></script>
+<script src="js/scripts.js"></script>
+<!-- Bootstrap Core JavaScript -->
+   <script src="js/bootstrap.min.js"></script>
+   <!-- /Bootstrap Core JavaScript -->
+   <!-- real-time -->
+<script language="javascript" type="text/javascript" src="js/jquery.flot.js"></script>
+	<script type="text/javascript">
+
+	$(function() {
+
+		// We use an inline data source in the example, usually data would
+		// be fetched from a server
+
+		var data = [],
+			totalPoints = 300;
+
+		function getRandomData() {
+
+			if (data.length > 0)
+				data = data.slice(1);
+
+			// Do a random walk
+
+			while (data.length < totalPoints) {
+
+				var prev = data.length > 0 ? data[data.length - 1] : 50,
+					y = prev + Math.random() * 10 - 5;
+
+				if (y < 0) {
+					y = 0;
+				} else if (y > 100) {
+					y = 100;
+				}
+
+				data.push(y);
+			}
+
+			// Zip the generated y values with the x values
+
+			var res = [];
+			for (var i = 0; i < data.length; ++i) {
+				res.push([i, data[i]])
+			}
+
+			return res;
+		}
+
+		// Set up the control widget
+
+		var updateInterval = 30;
+		$("#updateInterval").val(updateInterval).change(function () {
+			var v = $(this).val();
+			if (v && !isNaN(+v)) {
+				updateInterval = +v;
+				if (updateInterval < 1) {
+					updateInterval = 1;
+				} else if (updateInterval > 2000) {
+					updateInterval = 2000;
+				}
+				$(this).val("" + updateInterval);
+			}
+		});
+
+		var plot = $.plot("#placeholder", [ getRandomData() ], {
+			series: {
+				shadowSize: 0	// Drawing is faster without shadows
+			},
+			yaxis: {
+				min: 0,
+				max: 100
+			},
+			xaxis: {
+				show: false
+			}
+		});
+
+		function update() {
+
+			plot.setData([getRandomData()]);
+
+			// Since the axes don't change, we don't need to call plot.setupGrid()
+
+			plot.draw();
+			setTimeout(update, updateInterval);
+		}
+
+		update();
+
+		// Add the Flot version string to the footer
+
+		$("#footer").prepend("Flot " + $.plot.version + " &ndash; ");
+	});
+
+	</script>
+<!-- /real-time -->
+<script src="js/jquery.fn.gantt.js"></script>
+    
+</body>
+</html>

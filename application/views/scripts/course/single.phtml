@@ -1,0 +1,22 @@
+<?php
+
+		echo "<br><br><br><br>";
+		if($this->type == 1){
+		echo "<a class='btn btn-info' style='background-color: rgb(191, 204, 41);' href='".$this->baseUrl()."/course/edit/id_cours/".$this->course[0]['id_cours']."'> Edit </a>  &nbsp<a class='btn btn-danger' style='background-color: rgb(191, 204, 41);' href='".$this->baseUrl()."/course/delete/id_cours/".$this->course[0]['id_cours']."'> Delete </a><br />";
+		}
+
+		echo "<h1><a href=".$this->baseUrl()."/course/single/course_id/".$this->course[0]['id_cours'].">nnnn</a></h1><br />";
+
+
+		// echo "<h1><a href=".$this->baseUrl()."/course/single/course_id/".$this->course[0]['id_cours'].'>'.$this->course[0]['course'].'</a></h1><br />';
+
+
+		echo "<br /><label> Course Image: </label><h3>";
+		echo "<br /><img src='".$this->baseUrl()."/images/courses/".$this->course[0]['cours_image']."'/>";
+		
+		echo "<br /><label> Course Description : </label><h3>".$this->course[0]['cours_desc'].'</h3><br />';
+
+		echo "<br /><h7><a class='btn btn-info' style='background-color: rgb(191, 204, 41);' href=".$this->baseUrl()."/course/single/course_id/".$this->course[0]['id_cours'].'>Read More</a></h7><br /></div>';
+
+
+?>

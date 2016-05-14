@@ -1,0 +1,15 @@
+<h1>Create Your Account Here !</h1>
+
+
+<?php
+ echo $this->form;
+ if(isset($this->errorMessage))
+{
+echo $this->errorMessage;
+echo "<br/>";
+echo "Please Register Again";
+echo "<br/>";
+echo "<a href='".$this->baseUrl()."/users/add/'>Register</a>";
+}
+?>
+

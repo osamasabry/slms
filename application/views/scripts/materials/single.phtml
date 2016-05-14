@@ -1,0 +1,160 @@
+
+<?php
+
+    echo "<h1 style='font-family: initial;font-style: italic;font-size: 50px;margin-bottom: 30px;text-align: left;color: rgb(177, 46, 49);'>".$this->course[0]['course'].'</h1><br />';
+
+    if($this->type == 1){
+      echo "<a class='btn btn-danger' style='float: right;margin-right: 120px;' href='".$this->baseUrl()."/course/delete/id_cours/".$this->course[0]['id_cours']."'> Delete </a>&nbsp<a class='btn btn-info' style='float: right;margin-right: 50px;' href='".$this->baseUrl()."/course/edit/id_cours/".$this->course[0]['id_cours']."'> Edit </a>  &nbsp<br />";
+    }
+
+    echo "<h1 style='margin-top: -50px;font-style: italic;color: rgb(177, 46, 49);'> Viewed By : ".$this->course_num_views."</h1>";
+    echo "<br /><label style='font-family: initial;font-style: italic; font-weight: bold;font-size: 20px;color: #66CCCC;'> Course Image: </label><h3>";
+    echo "<br /><img style='margin: 20px; width: 850px;height: 300px;' src='".$this->baseUrl()."/images/courses/".$this->course[0]['cours_image']."'/>";
+    
+    echo "<br /><label style='font-family: initial;font-style: italic; font-weight: bold;font-size: 20px;color: #66CCCC;'> Course Description : </label><h3 style='margin: 20px;font-size: 20px;'>".$this->course[0]['cours_desc'].'</h3><br /></div><br>';
+
+?>
+<table>
+<tr>
+<td bgcolor="">
+<div class="typemat">
+    <?php
+	foreach ($this->typematerials as $tymat){
+              // ".$tymat['id_type']." :-  
+            echo "<a href='".$this->baseUrl()."/materials/single/course_id/".$this->course_id."/id_type/".$tymat['id_type']."'><font size='5'>*&nbsp;&nbsp;".$tymat['contain_type'].':</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(</a>';
+            echo "<a href='".$this->baseUrl()."/typematerials/edit/course_id/".$this->course_id."/id_type/".$tymat['id_type']."'>"
+              . " Edit </a> "."<a href='".$this->baseUrl()."/typematerials/delete/course_id/".$this->course_id."/id_type/".$tymat['id_type']."'> <font color='red'>Delete </font>)</a> <br />";
+	}
+        
+    ?>
+</div>
+</td>
+
+<td bgcolor="">
+<div class="typeup">
+    <?php
+      $upimage=0;
+      $upvideo=0;
+      $upword=0;
+      $upppt=0;
+      $uppdf=0;
+      $totalupload=0;
+      foreach ($this->typeuploadss as $tyup){
+        // ".$tyup['id_up']." :-  
+          echo "<a href='".$this->baseUrl()."/materials/single/course_id/".$this->course_id."/id_type/".$this->id_type."/id_up/".$tyup['id_up']."'>"
+                  . "<font size='5'>#&nbsp;&nbsp;".$tyup['contain_upload'].'&nbsp;:-</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(</a>';
+          echo "<a href='".$this->baseUrl()."/typeuploads/edit/course_id/".$this->course_id."/id_type/".$this->id_type."/id_up/".$tyup['id_up']."'>"
+            . " Edit </a> "."<a href='".$this->baseUrl()."/typeuploads/delete/course_id/".$this->course_id."/id_type/".$this->id_type."/id_up/".$tyup['id_up']."'> &nbsp;&nbsp;&nbsp;&nbsp;<font color='red'>Delete </font>)</a><br/><br/>";
+          
+         
+          if(($tyup['contain_upload'] == 'image') or($tyup['contain_upload'] == 'Image') ) { 
+              
+            foreach ($this->typeimages as $tyimage){
+                  if($tyimage['mat_image'] != NULL){
+                      $upimage+=1;
+                    echo "<a href='".$this->baseUrl()."/materials/showsingle/course_id/".$this->course_id."/id_type/".$this->id_type."/id_mat/".$tyimage['id_mat']."'>"
+                            . "<img  width='150' height='150' src='".$this->baseUrl()."/images/materials/".$tyimage['mat_image']."'/>"
+                            . "</a>";
+                    
+                    echo "<a href='".$this->baseUrl()."/materials/delete/course_id/".$this->course_id."/id_type/".$this->id_type."/id_mat/".$tyimage['id_mat']."'>"
+                            . "<font color='red'>( Delete )</font></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+                  }
+              }
+               echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <lable>".$upimage."</lable><img  width='30' height='30' src='".$this->baseUrl()."/images/up.png'/>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<lable>".$this->numdownimage."</lable>
+            <img  width='30' height='30' src='".$this->baseUrl()."/images/down.png'/><br/><br/>";
+          }
+
+          if(($tyup['contain_upload'] == 'video') or($tyup['contain_upload'] == 'Video') ) { 
+              
+            foreach ($this->typevides as $tyvideo){
+                  if($tyvideo['mat_video'] != NULL){
+                      $upvideo+=1;
+                    echo "<a href='".$this->baseUrl()."/materials/showvideo/course_id/".$this->course_id."/id_type/".$this->id_type."/id_mat/".$tyvideo['id_mat']."'><img  width='150' height='150' src='".$this->baseUrl()."/videos/video.jpg'/></a>";
+
+                    echo "<a href='".$this->baseUrl()."/materials/delete/course_id/".$this->course_id."/id_type/".$this->id_type."/id_mat/".$tyvideo['id_mat']."'>"
+                            . "<font color='red'>( Delete )</font></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+                  }
+              }
+               echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <lable>".$upvideo."</lable><img  width='30' height='30' src='".$this->baseUrl()."/images/up.png'/>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<lable>".$this->numdownvideo."</lable>
+            <img  width='30' height='30' src='".$this->baseUrl()."/images/down.png'/><br/><br/>";
+          }
+
+          if(($tyup['contain_upload'] == 'PDF') or($tyup['contain_upload'] == 'pdf') ) { 
+              
+            foreach ($this->typePDFs as $typdf){
+                  if($typdf['mat_pdf'] != NULL){
+                      $uppdf+=1;
+                    echo "<a href='".$this->baseUrl()."/pdfs"."/".$typdf['mat_pdf']."'>".$typdf['mat_pdf']."</a>";
+                    
+                    echo "&nbsp;&nbsp;<a href='".$this->baseUrl()."/materials/delete/course_id/".$this->course_id."/id_type/".$this->id_type."/id_mat/".$typdf['id_mat']."'>"
+                            . "<font color='red'>( Delete )</font></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+                  }
+              }
+               echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <lable>".$uppdf."</lable><img  width='30' height='30' src='".$this->baseUrl()."/images/up.png'/>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<lable>{{num pdf}}</lable>
+            <img  width='30' height='30' src='".$this->baseUrl()."/images/down.png'/><br/><br/>";
+          }
+          
+          if(($tyup['contain_upload'] == 'Word') or($tyup['contain_upload'] == 'word') ) { 
+              
+            foreach ($this->typewords as $tyword){
+                  if($tyword['mat_word'] != NULL){
+                      $upword+=1;
+                    echo "<a href='".$this->baseUrl()."/Words"."/".$tyword['mat_word']."'>".$tyword['mat_word']."</a>";
+                    
+                    echo "&nbsp;&nbsp;<a href='".$this->baseUrl()."/materials/delete/course_id/".$this->course_id."/id_type/".$this->id_type."/id_mat/".$tyword['id_mat']."'>". "<font color='red'>( Delete )</font></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+                  }
+              }
+               echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <lable>".$upword."</lable><img  width='30' height='30' src='".$this->baseUrl()."/images/up.png'/>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<lable>{{num word}}</lable>
+            <img  width='30' height='30' src='".$this->baseUrl()."/images/down.png'/><br/><br/>";
+          }
+
+          if(($tyup['contain_upload'] == 'PPT') or($tyup['contain_upload'] == 'ppt') ) { 
+              
+            foreach ($this->typePPTs as $typpt){
+                  if($typpt['mat_ppt'] != NULL){
+                      $upppt+=1;
+                    echo "<a href='".$this->baseUrl()."/ppts"."/".$typpt['mat_ppt']."'>".$typpt['mat_ppt']."</a>";
+                    
+                    echo "&nbsp;&nbsp;<a href='".$this->baseUrl()."/materials/delete/course_id/".$this->course_id."/id_type/".$this->id_type."/id_mat/".$typpt['id_mat']."'>"
+                            . "<font color='red'>( Delete )</font></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+                  }
+              }
+               echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <lable>".$upppt."</lable><img  width='30' height='30' src='".$this->baseUrl()."/images/up.png'/>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<lable>{{num ppt}}</lable>
+            <img  width='30' height='30' src='".$this->baseUrl()."/images/down.png'/><br/><br/>";
+          }
+          
+          
+          
+         echo "<br/><hr/>";
+      }
+
+  ?>  
+</td>
+</div>
+<tr>
+<td >
+  <font color="red" size="5">Total Upload/Download</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</td>
+<td>
+
+ <?php
+ echo "<div class='totalupload'>";
+  $totalupload=$upimage+$upvideo+$uppdf+$upword+$upppt;
+  echo "</div>";
+echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<lable>".$totalupload."</lable><img  width='30' height='30' src='".$this->baseUrl()."/images/up.png'/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<lable>".$this->totaldownload."</lable><img  width='30' height='30' src='".$this->baseUrl()."/images/down.png'/>";
+?>
+</div>
+</td>
+</tr>
+</table>
+  <hr/>

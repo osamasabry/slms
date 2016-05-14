@@ -1,0 +1,62 @@
+
+
+
+<div margin='auto' >
+<?php
+
+    echo "<h1 style='font-family: initial;font-style: italic;font-size: 50px;margin-bottom: 30px;text-align: left;color: rgb(177, 46, 49);'>".$this->cateogry[0]['category'].'</h1><br />';
+
+     echo "<h1 style='margin-top: -50px;font-style: italic;color: rgb(177, 46, 49);'> Viewed By : ".$this->viewcato."</h1>";
+    echo "<br /><label style='font-family: initial;font-style: italic; font-weight: bold;font-size: 20px;color: #66CCCC;'> Category Image: </label><h3>";
+    echo "<br /><img style='margin: 20px; width: 850px;height: 300px;' src='".$this->baseUrl()."/images/category/".$this->cateogry[0]['image']."'/>";
+    
+    echo "<br /><label style='font-family: initial;font-style: italic; font-weight: bold;font-size: 20px;color: #66CCCC;'> Category Description : </label><h3 style='margin: 20px;font-size: 20px;'>".$this->cateogry[0]['desc'].'</h3><br /></div><br>';
+    
+?>
+
+</div>
+
+
+
+<!-- <div class="content">
+<div class="women_main"> -->
+	<!-- start content -->
+   <div class="w_content">
+<!--        <div class="women">
+            <div class="clearfix"></div>	
+        </div>-->
+        <!-- grids_of_4 -->
+        <div class="grids_of_4">
+            <?php
+                foreach ($this->courses as $course){
+
+                    echo '<div class="grid1_of_4" style="margin-right:10px; margin-left: -3px; padding:15px;">';
+                    echo "<div class='content_box' style='width: 250px;height: 250px;'>";
+
+                    echo "<img style='width: 250px;height: 150px;' src='".$this->baseUrl()."/images/courses/".$course['cours_image']."' class='img-responsive' alt=''></a>";
+
+
+                    echo '<h4><a href='.$this->baseUrl()."/course/single/course_id/".$course['id_cours'].">".$course['course'].'</a></h4>';
+
+                    echo "<p> ".$course['cours_desc'] ."</p>";
+
+                    echo '<div class="item_add"><span class="item_price"><a href ='.$this->baseUrl()."/course/single/course_id/".$course['id_cours'].'>Read More</a></span></div>';
+
+                    echo '</div>';
+                    echo ' </div>';
+                    // echo '</div>';
+                }
+            ?>
+            <div class="clearfix"></div>
+        </div>
+	</div>
+ 	
+
+
+
+
+
+
+
+
+

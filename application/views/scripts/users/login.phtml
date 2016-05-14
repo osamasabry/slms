@@ -1,0 +1,37 @@
+<h1>Please Login Here !</h1>
+
+<style>
+/*    .errors{
+        display: none;
+    }*/
+    
+</style>
+<script>
+    var span;
+    
+    onload=function(){
+    
+
+    span=document.getElementById("username");
+    span.onblur =function(){
+							
+        if(span.value=="")
+        {	
+                this.className="";
+//                uspan.style.display="none";
+                
+        }
+        else
+        {
+                this.focus();
+                this.select();
+                this.className="Error";
+        }		
+    }		
+
+}
+
+</script>
+<?php
+   echo $this->form;
+?>

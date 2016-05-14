@@ -1,0 +1,30 @@
+<?php
+      foreach ($this->showmaterial as $shsingle){
+        // echo $shsingle['id_mat'];
+        echo "<video controls  width='700' id='myvideo'>
+              <source src='".$this->baseUrl()."/videos/".$shsingle['mat_video']."'/>
+              </video>";
+      echo "<br/><br/><lable>".$shsingle['desc_video']."</lable><br><br/>";
+     
+     echo "<a href='".$this->baseUrl()."/materials/editmaterial/course_id/".$this->course_id."/id_type/".$this->id_type."/id_mat/".$shsingle['id_mat']."'><button class='btn btn-info'>Updata </button><br><hr/>";
+    
+    
+      echo "<br/><br/><a href='".$this->baseUrl()."/materials/downloadvideo/course_id/".$this->course_id."/id_type/".$this->id_type."/id_mat/".$shsingle['id_mat']."'><button class='btn btn-info'>Download</button> </a> <br/><br/>";
+
+      
+    }
+
+
+
+?>
+
+<h1>Add Comment</h1>
+
+    <?php 
+
+  echo $this->form;
+?>
+</div>
+<hr/>
+
+                            

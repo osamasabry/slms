@@ -1,0 +1,171 @@
+<?php echo $this->doctype() ?>
+<html>
+<head>
+<?php echo $this->headMeta(); ?>
+<?php echo $this->headTitle(); ?>
+<?php echo $this->headLink(); ?>
+
+</head>
+<body>
+<div class="wrap">
+<div class="wrapper">
+<div class="logo">
+	<a href="<?php echo $this->baseUrl()."/users/index"?>"><h1>SLMS</h1></a>
+</div>
+<div class="header_right">
+	<div class="cssmenu">
+		<ul style="width: 950px;margin-left: -300px;">
+			<?php 
+	            $auth = Zend_Auth::getInstance();
+
+	                if($auth->hasIdentity()){
+	                    
+	                    $identity = $auth->getIdentity(); 
+	                    $id = $identity->id_user;
+	                    $type = $identity->type;
+	                    $ban_user = $identity->ban_user;
+	                    if($ban_user == 1){
+	                    $username = $identity->username;
+	                
+	        ?>
+		  	<li class="active">
+		  		<?php
+                    echo "<a href='".$this->baseUrl()."/cateogry/index'> Home </a>";
+                ?>
+		  	</li>
+		<!-- 	<li>
+				<?php 
+                	// echo "<a href='".$this->baseUrl()."/cateogry/index'> All Categories </a>";  
+                ?>
+			</li> -->
+			<li>
+				<?php
+				// echo $this->admin_user[0]['type'];
+					if($type == 1){
+						echo "<a href='".$this->baseUrl()."/admin/index'> Control Panel </a>";
+					}
+                ?>
+			</li>
+			<li>
+				<?php 
+                	echo "<a href='".$this->baseUrl()."/users/profile'> Profile </a>";  
+                ?>
+			</li>
+
+
+			<li class="has-sub">
+				<?php 
+                	echo "<a href='".$this->baseUrl()."/Requests/add'> Add Request </a>";  
+                ?>
+			</li>
+
+
+			<li class="last">
+				<?php
+                    echo "<a href='".$this->baseUrl()."/users/logout'> Log Out </a>";
+                ?>
+			</li>
+			<?php
+					//if user account is deactive show only sign in and sign up ---> shrouk
+                	}else{
+                		?>
+						<li class="has-sub">
+							<?php
+			                    echo "<a href='".$this->baseUrl()."/users/login'> Sign In </a>";
+			                ?>
+						</li>
+						<li class="last">
+							<?php
+			                    echo "<a href='".$this->baseUrl()."/users/add'> Sign Up </a>";
+			                ?>
+						</li>
+						<?php
+                	}	
+            	}
+                else{
+            ?>
+			<li class="has-sub" style="margin-left: 400px;">
+				<?php
+                    echo "<a href='".$this->baseUrl()."/users/login'> Sign In </a>";
+                ?>
+			</li>
+			<li class="last">
+				<?php
+                    echo "<a href='".$this->baseUrl()."/users/add'> Sign Up </a>";
+                ?>
+			</li>
+			<?php
+                }
+            ?>
+			<div class="clear"></div>
+		 </ul>
+	</div>
+		<div style="float: right;margin-left: -650px;margin-top: -80px;font-family: initial;font-style: oblique;font-size: 25px;color: #A4AF20;">
+		<?php 
+			$auth = Zend_Auth::getInstance();
+
+            if($auth->hasIdentity()){
+                
+                $identity = $auth->getIdentity(); 
+                $id = $identity->id_user;
+                $type = $identity->type;
+                $ban_user = $identity->ban_user;
+                if($ban_user == 1){
+                $username = $identity->username;
+
+			 	echo "<span class='fa fa-user'></span>Welcome $username";
+			 	}
+		 	}
+		 ?>
+		</div>
+</div>
+	<div class="clear"></div>
+</div>
+</div>
+<div class="fluid_container">
+   <div class="camera_wrap camera_emboss pattern_1" id="camera_wrap_4">
+          <div data-src='../images/slider1.jpg'> </div>
+            <div data-src='../images/slider2.jpg'> </div>
+            <div  data-src='../images/slider3.jpg'> </div>
+  </div>
+</div>
+	<div class="clear"></div>
+<div class="wrap">
+<div class="wrapper">
+
+
+
+<?php
+
+
+
+echo $this->layout()->content;
+
+
+?>
+
+</div>
+</div>
+<div class="clearfix"></div>
+<div class="wrap">
+<div class="wrapper">
+	<div class="footer">
+		<div class="social-icons">
+	   		  	<ul>
+			      <li class="icon_1"><a href="#" target="_blank"> </a></li>
+			      <li class="icon_2"><a href="#" target="_blank"> </a></li>
+			      <li class="icon_3"><a href="#" target="_blank"> </a></li>
+			      <li class="icon_4"><a href="#" target="_blank"> </a></li>
+			      <div class="clear"></div>
+		     </ul>
+	   	 </div>
+		<a href="index.html"><h2>erudite</h2></a>
+		<div class="copy">
+			<p class="w3-link">© All Rights Reserved | Design by&nbsp; <a href="http://w3layouts.com/"> W3Layouts</a></p>
+		</div>
+	</div>
+</div>
+<div class="clear"></div>
+</div>
+</body>
+</html>

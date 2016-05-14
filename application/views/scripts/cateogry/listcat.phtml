@@ -1,0 +1,19 @@
+<h1 style="font-family: initial;font-style: italic;font-size: 3em;margin-bottom: 30px;text-align: center; color:#66CCCC;"> All Categories </h1>
+
+<?php
+       
+    echo "<table class='table table-striped' style='padding:30px;'>";
+    echo "<tr style='background-color:#333; color:white;'><th style='text-align:center; width: 50px; font-size:20px; font-family:Tahoma;'> ID </th><th style='text-align:center;width: 80px; font-size:20px; font-family:Tahoma;'> Name </th>";
+    foreach ($this->cateogries as $cat) {
+    	echo "<tr><td style='text-align:center;background-color:#D9534F;font-size:20px;font-family:Tahoma;'>".$cat['id_cato']."</td>";
+    	echo"<td style='font-size:20px;font-family:Tahoma;text-align:center;background-color:#5CB85C'>";
+    	echo "<a href='".$this->baseUrl()."/course/listcourse/id/".$cat['id_cato']."'>".$cat['category']."</a>";
+    	echo "</td>";
+    }
+    
+    echo "</table>";
+
+?>
+
+
+<!-- <a href='.$this->baseUrl()."/course/index/id/".$course['id_cato'].">".$cat['category'].'</a> -->

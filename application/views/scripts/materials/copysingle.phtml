@@ -1,0 +1,81 @@
+<?php
+
+
+
+    echo "<br><br><br><br>";
+    echo "<a class='btn btn-info' style='background-color: rgb(191, 204, 41);' href='".$this->baseUrl()."/course/edit/id_cours/".$this->course[0]['id_cours']."'> Edit </a>  &nbsp<a class='btn btn-danger' style='background-color: rgb(191, 204, 41);' href='".$this->baseUrl()."/course/delete/id_cours/".$this->course[0]['id_cours']."'> Delete </a><br />";
+
+    echo "<h1><a href=".$this->baseUrl()."/course/single/course_id/".$this->course[0]['id_cours']." >".$this->course[0]['course'].'</a></h1><br />';
+    echo "<br /><label> Course Image: </label><h3>";
+    echo "<br /><img src='".$this->baseUrl()."/images/courses/".$this->course[0]['cours_image']."'/>";
+    
+    echo "<br /><label> Course Description : </label><h3>".$this->course[0]['cours_desc'].'</h3><br />';
+
+    echo "<br /><h7><a class='btn btn-info' style='background-color: rgb(191, 204, 41);' href=".$this->baseUrl()."/course/single/course_id/".$this->course[0]['id_cours'].'>Read More</a></h7><br /></div>';
+
+?>
+
+<?php
+    echo "<a href='".$this->baseUrl()."/materials/addmaterial/course_id/".$this->course_id."/id_type/".$this->id_type."'><button>Add New Materials</button><br><hr/>";
+    
+
+?>
+    <?php
+	foreach ($this->typematerials as $tymat){
+            echo "<a href='".$this->baseUrl()."/materials/single/course_id/".$this->course_id."/id_type/".$tymat['id_type']."'><font size='5'>".$tymat['id_type']." :-  ".$tymat['contain_type'].'</font></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(';
+            echo "<a href='".$this->baseUrl()."/typematerials/edit/course_id/".$this->course_id."/id_type/".$tymat['id_type']."'>"
+              . " Edit </a> "."<a href='".$this->baseUrl()."/typematerials/delete/course_id/".$this->course_id."/id_type/".$tymat['id_type']."'> Delete )</a> <br />";
+	}
+        
+        echo "<a href='".$this->baseUrl()."/typematerials/addtypemat/course_id/".$this->course_id."/id_type/".$this->id_type."'>"
+          . " <button>Add New Type Materials</button> </a> <br/><br/>";
+    ?>
+
+</div>
+
+<hr/>
+<div>
+    <?php
+      foreach ($this->typeuploadss as $tyup){
+          echo "<a href='".$this->baseUrl()."/materials/single/course_id/".$this->course_id."/id_type/".$this->id_type."/id_up/".$tyup['id_up']."'>"
+                  . "<font size='5'>".$tyup['id_up']." :-  ".$tyup['contain_upload'].'</font></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(';
+          echo "<a href='".$this->baseUrl()."/typeuploads/edit/course_id/".$this->course_id."/id_type/".$this->id_type."/id_up/".$tyup['id_up']."'>"
+            . " Edit </a> "."<a href='".$this->baseUrl()."/typeuploads/delete/course_id/".$this->course_id."/id_type/".$this->id_type."/id_up/".$tyup['id_up']."'> Delete )</a><br/><br/>";
+          
+         
+          if(($tyup['contain_upload'] == 'image') or($tyup['contain_upload'] == 'Image') ) { 
+              $upimage=0;
+            foreach ($this->typeimages as $tyimage){
+                  if($tyimage['mat_image'] != NULL){
+                      $upimage+=1;
+                    echo "<a href='".$this->baseUrl()."/materials/showsingle/course_id/".$this->course_id."/id_type/".$this->id_type."/id_mat/".$tyimage['id_mat']."'>"
+                            . "<img  width='150' height='150' src='".$this->baseUrl()."/images/materials/".$tyimage['mat_image']."'/>"
+                            . "</a>";
+                    
+                    echo "<a href='".$this->baseUrl()."/materials/delete/course_id/".$this->course_id."/id_type/".$this->id_type."/id_mat/".$tyimage['id_mat']."'>"
+                            . "(Delete )</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+                  }
+              }
+               echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <lable>".$upimage."</lable><img  width='30' height='30' src='".$this->baseUrl()."/images/up.png'/>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<lable>".$this->numdownimage."</lable>
+            <img  width='30' height='30' src='".$this->baseUrl()."/images/down.png'/><br/><br/>";
+          }
+          
+          
+          
+         echo "<br/><hr/>";
+      }
+
+      echo "<br/><br/><a href='".$this->baseUrl()."/typeuploads/addtypeup/course_id/".$this->course_id."/id_type/".$this->id_type."'>"
+        . " <button>Add New Upload Materials</button> </a> <br/><br/>";
+  ?>  
+</div>
+
+
+<hr/>
+ <?php
+$totalupload=0;
+echo "<font color='red' size='5'>Total Upload/Download</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<lable>".$totalupload."</lable><img  width='30' height='30' src='".$this->baseUrl()."/images/up.png'/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<lable>".$this->totaldownload."</lable><img  width='30' height='30' src='".$this->baseUrl()."/images/down.png'/>";
+?>
+  <hr/>
